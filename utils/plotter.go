@@ -19,6 +19,8 @@ func draw(title string, imageName string, pts plotter.XYs) {
 	}
 	lpLine.Color = color.RGBA{B: 255, A: 255}
 	lpPoints.Color = color.RGBA{R: 255, A: 255}
+	p.Legend.Add("Line", lpLine)
+	p.Legend.Add("Point", lpPoints)
 	p.Add(lpLine, lpPoints)
 	if err := p.Save(10*vg.Inch, 10*vg.Inch, imageName); err != nil {
 		panic(err)

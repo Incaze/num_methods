@@ -1,13 +1,11 @@
 package utils
 
-const maxThreads = 10000
-
 type Threader struct {
 	threads int
 	n       int
 }
 
-func MakeThreader(n int) *Threader {
+func MakeThreader(maxThreads int, n int) *Threader {
 	threader := new(Threader)
 	threader.n = n
 	if n <= maxThreads {

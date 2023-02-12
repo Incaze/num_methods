@@ -27,7 +27,7 @@ func main() {
 	x := make([]float64, n+2)
 	uPrev := make([]float64, n+2)
 
-	threader := utils.MakeThreader(n)
+	threader := utils.MakeThreader(env.GetMaxThreads(), n)
 	executor := utils.MakeExecutor(a, rounder, x)
 
 	pts := make(plotter.XYs, n)

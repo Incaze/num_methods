@@ -20,7 +20,8 @@ type Env struct {
 	tM float64
 	m  int
 
-	precision int
+	precision  int
+	maxThreads int
 }
 
 func (env *Env) GetA() float64 {
@@ -53,6 +54,10 @@ func (env *Env) GetN() int {
 
 func (env *Env) GetM() int {
 	return env.m
+}
+
+func (env *Env) GetMaxThreads() int {
+	return env.maxThreads
 }
 
 func getExecutablePath() (string, error) {
@@ -100,6 +105,7 @@ func CreateEnv() *Env {
 	env.tM = parseFloat64("tM")
 	env.m = parseInt("m")
 	env.precision = parseInt("precision")
+	env.maxThreads = parseInt("maxThreads")
 
 	return env
 }
