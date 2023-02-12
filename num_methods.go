@@ -10,19 +10,18 @@ func main() {
 	// a = 1 const
 	//h = 1 / (n - 1)
 	//t : at/h < 1  -> t/h < 1, t < h
-	a := 1.0
-
-	x0 := 0.0
-	xN := 1.0
-	n := 10000
-
-	t0 := 0.0
-	tM := 0.1
-	m := 100
+	env := utils.CreateEnv()
+	a := env.GetA()
+	x0 := env.GetX0()
+	xN := env.GetXN()
+	n := env.GetN()
+	t0 := env.GetT0()
+	tM := env.GetTm()
+	m := env.GetM()
 
 	var wg sync.WaitGroup
 
-	rounder := utils.MakeRounder(-1)
+	rounder := utils.MakeRounder(env.GetPrecision())
 	h := rounder.ToFixed((xN - x0) / float64(n-1))
 	hTime := rounder.ToFixed((tM - t0) / float64(m-1))
 	x := make([]float64, n+2)

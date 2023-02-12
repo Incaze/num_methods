@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"gonum.org/v1/plot/plotter"
 	"math"
 	"sync"
@@ -51,7 +50,6 @@ func (executor *Executor) Initialize(uPrev *[]float64, from int, to int, pts *pl
 	for i := from; i <= to; i++ {
 		executor.x[i] = executor.rounder.ToFixed(h * float64(i))
 		(*uPrev)[i] = getUStartValue(executor.x[i])
-		fmt.Println((*uPrev)[i])
 		(*pts)[i-1].X = executor.x[i]
 		(*pts)[i-1].Y = (*uPrev)[i]
 	}
